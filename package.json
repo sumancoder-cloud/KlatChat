@@ -1,0 +1,24 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix frontend && npm install --prefix backend && npm run build --prefix frontend ",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumancoder-cloud/KlatChat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumancoder-cloud/KlatChat/issues"
+  },
+  "homepage": "https://github.com/sumancoder-cloud/KlatChat#readme",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
