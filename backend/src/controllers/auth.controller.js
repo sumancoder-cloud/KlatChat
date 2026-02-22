@@ -45,18 +45,24 @@ const bcrypt=require('bcryptjs');
 
 const generateToken=require('../lib/utils')
 
+const sendMail=require('../utils/sendEmail');
+
+const EmailTemplate=require('../utils/EmailTemplate')
+
+console.log("Signup API hit");
+
 const signUp=async(req,res)=>{
     const {fullName,email,password}=req.body;
     try{
         
         if(!fullName || !email || !password){
-            res.status(400).json({
+            return res.status(400).json({
                 message:"All fields are required"
             })
         }
 
         if(password.length<6){
-            res.status(400).json({
+            return  res.status(400).json({
                 message:"Password must have atleast 6 characters"
             })
         }
@@ -65,7 +71,7 @@ const signUp=async(req,res)=>{
         const emailRegex=/^[^\s@]+@[^\s@]+\.+[^\s@]+$/
 
         if(!emailRegex.test(email)){
-            res.status(400).json({
+            return res.status(400).json({
                 message:"Email is in invalid format "
             })
         }
@@ -73,7 +79,7 @@ const signUp=async(req,res)=>{
 
         const user=await User.findOne({email})
     if(user){
-      return res.status(400).json({
+        return res.status(400).json({
             message:"Email already exists"
         })
     }
@@ -88,22 +94,40 @@ const signUp=async(req,res)=>{
 
 if(newUser){
     await newUser.save();
-    generateToken(newUser._id,res)
+    console.log("before generateToken");
+    const token = await generateToken(newUser._id);
+    console.log("After generateToken");
 
+    res.cookie("jwt", token, {
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+        httpOnly: true, // prevents XSS attacks and cross-site sharing
+        sameSite: "strict", // CSRF attacks
+        secure: process.env.NODE_ENV === "development" ? false : true,
+    });
 
     res.status(201).json({
-        _id:newUser._id,
-        fullName:newUser.fullName,
-        email:newUser.email,
-        password:newUser.password,
-        profilePic:newUser.profilePic
-    })
-}else{
+        _id: newUser._id,
+        fullName: newUser.fullName,
+        email: newUser.email,
+        password: newUser.password,
+        profilePic: newUser.profilePic,
+    });
+
+    // send email (use positional args expected by sendMail)
+    (async () => {
+        try {
+            console.log('sending email to:', newUser.email);
+            await sendMail(newUser.email, 'Regarding Account Creation', EmailTemplate(newUser.fullName));
+            console.log('Email sent');
+        } catch (err) {
+            console.error('Email was not sent', err.message || err);
+        }
+    })();
+
+} else {
     return res.status(400).json({
         message:"User Data is Invalid"
     })
-
-
 }
 
     }catch(error){
