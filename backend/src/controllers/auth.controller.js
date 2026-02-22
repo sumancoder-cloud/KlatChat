@@ -94,9 +94,8 @@ const signUp=async(req,res)=>{
 
 if(newUser){
     await newUser.save();
-    console.log("before generateToken");
+   
     const token = await generateToken(newUser._id);
-    console.log("After generateToken");
 
     res.cookie("jwt", token, {
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
@@ -140,11 +139,77 @@ if(newUser){
 }
 
 const login=async(req,res)=>{
-    res.send("login end point working succesfully");
+    const{email,password}=req.body;
+
+    try{
+
+    if(!email || !password){
+        return res.status(400).json({
+            message:"All fields are required"
+        })
+    }
+
+    if(password.length<6){
+        return res.status(400).json({
+            message:"Password must have atleast 6 characters"
+        })
+    }
+
+    const emailRegex=/^[^\s@]+@[^\s@]+\.+[^\s@]+$/;
+
+    if(!emailRegex.test(email)){
+        return res.status(400).json({
+            message:"Invalid Email Format"
+        })
+    }
+
+    const user=await User.findOne({email});
+
+    if(!user){
+        return res.status(400).json({
+            message:"Invalid Credentials"
+        })
+    }
+
+    const isPassword=await bcrypt.compare(password,user.password)
+
+    if(!isPassword){
+        return res.json({
+            message:"Invalid Credentials"
+        })
+    }
+
+    generateToken(user._id);
+
+    console.log("Login endpoint working correctlyy")
+
+    return res.status(201).json({
+        _id:user._id,
+        fullName:user.fullName,
+        email:user.email,
+        profilePic:user.profilePic
+    })
+
+   
+}catch(error){
+    console.log("Error at Login Endpoint");
+    return res.status(500).json({
+        message:"Internal Server Error"
+    })
+}
+
 }
 
 const logOut=(req,res)=>{
-    res.send("logOut end point working succesfully");
+    res.cookie("jwt","",{
+        maxAge:0
+    })
+    return res.status(200).json({
+        message:"Logged Out SuccessFully",
+        httpOnly:true,
+        sameSite:"strict",
+        secure: process.env.NODE_ENV==="development" ? false: true
+    })
 }
 
 module.exports={
