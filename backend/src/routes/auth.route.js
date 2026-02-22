@@ -1,26 +1,14 @@
 const express=require('express');
+const app=express();
+app.use(express.json())
+const {signUp,login,logOut}=require('../controllers/auth.controller')
 
 const router=express.Router();
 
-router.get('/signUp',(req,res)=>{
-    console.log("Entered at signup endpoint ");
-    res.status(200).json({
-        message:"sign up endpoint working"
-    })
-})
+router.post('/signUp',signUp)
 
-router.get('/login',(req,res)=>{
-    console.log("you are at the login end point");
-    res.status(200).json({
-        message:"login end point is working successfully"
-    })
-})
+router.get('/login',login)
 
-router.get('/logout',(req,res)=>{
-    console.log("you are at the logout end point");
-    res.status(200).json({
-        message:"logout end point is working successfully"
-    })
-})
+router.get('/logout',logOut)
 
 module.exports=router;
