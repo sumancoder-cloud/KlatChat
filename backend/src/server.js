@@ -8,7 +8,11 @@ const app=express();
 
 app.use(express.json())
 
+app.use(cookieParser())
+
 const path=require('path')
+
+const cookieParser=require('cookie-parser')
 
 //even we can useimport express from 'express'  but need to keep the type as module
 
@@ -25,7 +29,11 @@ const PORT=process.env.PORT || 3001
 console.log("PORT from env:", process.env.PORT);
 
 app.use('/api/auth',authRoutes)
+
 app.use('/api/messages',messageRoutes);
+
+
+
 if(process.env.NODE_ENV==="production"){
     app.use(express.static(path.join(__dirname,"../frontend/dist")))
 
