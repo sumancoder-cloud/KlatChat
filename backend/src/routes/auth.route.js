@@ -3,6 +3,7 @@ const app=express();
 app.use(express.json())
 const {signUp,login,logOut,updateProfile}=require('../controllers/auth.controller')
 
+
 const {protectRoute}=require('../middleware/auth.middleware')
 
 const arcjetProtection=require('../middleware/arcjet.middleware')
