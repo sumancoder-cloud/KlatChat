@@ -8,11 +8,12 @@ const app=express();
 
 app.use(express.json())
 
-app.use(cookieParser())
 
 const path=require('path')
 
 const cookieParser=require('cookie-parser')
+
+app.use(cookieParser())
 
 //even we can useimport express from 'express'  but need to keep the type as module
 

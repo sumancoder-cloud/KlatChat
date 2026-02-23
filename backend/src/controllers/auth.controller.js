@@ -49,6 +49,9 @@ const sendMail=require('../utils/sendEmail');
 
 const EmailTemplate=require('../utils/EmailTemplate')
 
+const cloudinary=require('cloudinary')
+
+
 console.log("Signup API hit");
 
 const signUp=async(req,res)=>{
@@ -96,6 +99,7 @@ if(newUser){
     await newUser.save();
    
     const token = await generateToken(newUser._id);
+
 
     res.cookie("jwt", token, {
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
@@ -179,7 +183,14 @@ const login=async(req,res)=>{
         })
     }
 
-    generateToken(user._id);
+    const token = await generateToken(user._id);
+
+     res.cookie("jwt", token, {
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+        httpOnly: true, // prevents XSS attacks and cross-site sharing
+        sameSite: "strict", // CSRF attacks
+        secure: process.env.NODE_ENV === "development" ? false : true,
+    });
 
     console.log("Login endpoint working correctlyy")
 
@@ -212,9 +223,45 @@ const logOut=(req,res)=>{
     })
 }
 
+const updateProfile=async(req,res)=>{
+    const {profilePic}=req.body
+    try{
+
+        if(!profilePic){
+            return res.status(400).json({
+                message:"Profile Pic Must Upload"
+            })
+        }
+
+        const userId=req.user._id
+
+        const uploadResponse=await cloudinary.uploader.upload(profilePic)
+
+        const updatedUser=await User.findByIdAndUpdate(userId,
+            {
+                profilePic:uploadResponse.secure_url
+            },
+            {
+                new:true
+            }
+        )
+
+        return res.status(200).json({
+            message:"ProfilePic Uploaded or Updated Successfully"
+        },updatedUser)
+
+
+    }catch(error){
+        console.log("Error Occured at the updateProfile Endpoint")
+        return res.status(500).json({
+            message:"Internal Server Error"
+        })
+    }
+}
 module.exports={
     signUp,
     login,
-    logOut
+    logOut,
+    updateProfile
 }
 
