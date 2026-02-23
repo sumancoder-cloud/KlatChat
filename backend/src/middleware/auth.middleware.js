@@ -1,42 +1,44 @@
 const jwt=require('jsonwebtoken')
 
-const user=require('../models/User.model')
+const User=require('../models/User.model')
+
 
 const protectRoute=async(req,res,next)=>{
     try{
 
-        const token=req.cookies.jwt
-
+        const token=req.cookies.jwt;
         if(!token){
             return res.status(401).json({
-                message:"Unauthorized - No token Found"
+                message:"Unauthorized access- Not valid token"
             })
         }
 
         const decoded=jwt.verify(token,process.env.JWT_SECRET)
-
         if(!decoded){
             return res.status(401).json({
-                message:"Unauthorized-Invalid Data"
+                message:"Unauthorized access- Not valid token"
             })
         }
 
-        const user=await User.findByOne(decoded.userid);
+        const user=await User.findById(decoded.userId).select("-password")
 
         if(!user){
-            return res.status(401).json({
-                message:"User not found"
+            return res.status(404).json({
+                message:"User not Found"
             })
         }
-
+        req.user=user
         next();
 
     }catch(error){
-        console.log("Error while doing the Protected routes")
+        console.log("Error Occured at Protected Route",error.message)
+
         return res.status(500).json({
-            message:"Internal Server Error"
+            message:"internal Server Error"
         })
     }
 }
 
-module.exports=protectRoute
+module.exports={
+    protectRoute
+}
