@@ -5,15 +5,17 @@ const {signUp,login,logOut,updateProfile}=require('../controllers/auth.controlle
 
 const {protectRoute}=require('../middleware/auth.middleware')
 
-
+const arcjetProtection=require('../middleware/arcjet.middleware')
 
 const router=express.Router();
 
-router.post('/signup',signUp)
 
-router.post('/login',login)
 
-router.post('/logout',logOut)
+router.post('/signup',arcjetProtection,signUp)
+
+router.post('/login',arcjetProtection,login)
+
+router.post('/logout',arcjetProtection,logOut)
 
 router.put('/update-profile',protectRoute,updateProfile)
 
