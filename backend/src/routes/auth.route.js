@@ -10,7 +10,11 @@ const arcjetProtection=require('../middleware/arcjet.middleware')
 
 const router=express.Router();
 
-
+// router.get('/test',arcjetProtection,(req,res)=>{
+//     return res.status(200).json({
+//         message:"Test Route"
+//     })
+// })
 
 router.post('/signup',arcjetProtection,signUp)
 
