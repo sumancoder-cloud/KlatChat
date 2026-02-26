@@ -6,7 +6,10 @@ const dotenv=require('dotenv');
 
 const cors=require('cors')
 
-const app=express();
+const {Server}=require('socket.io')
+
+
+const{app,server}=require('./lib/socket.js')
 
 app.use(
     cors({
@@ -55,7 +58,7 @@ if(process.env.NODE_ENV==="production"){
 }
 
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     console.log("Server is running on port number "+PORT);
     connectDb();
 })
