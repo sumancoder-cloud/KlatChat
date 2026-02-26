@@ -74,7 +74,7 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 ### 🔐 Beautiful Authentication
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20133907.png" alt="Login Page" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20133801.png" alt="Login Page" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
 
 *Sleek sign-in & sign-up with form validation and animated backgrounds*
 
@@ -86,7 +86,7 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 ### 💬 Real-Time Messaging
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20133935.png" alt="Chat Interface" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20143943.png" alt="Chat Interface" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
 
 *Send messages, share images, and see online status in real-time*
 
@@ -98,9 +98,9 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 ### 👥 Contact Management
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20134001.png" alt="Contacts" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<img src="https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif" width="120">
 
-*Easily manage your contacts with online indicators*
+*Easily manage your contacts and see who's online with real-time presence indicators. Your contact list stays synced across all devices!*
 
 <br/>
 
@@ -110,7 +110,7 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 ### 🎮 Games Hub
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20134027.png" alt="Games Modal" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20134149.png" alt="Games Modal" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
 
 *Challenge friends to multiplayer games without leaving the chat!*
 
@@ -120,11 +120,28 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 <br/>
 
-### 🎲 Game In Action
+### 🎲 Games In Action
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20134149.png" alt="Playing Games" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20133907.png" alt="Game 1" width="100%" style="border-radius: 12px;"/>
+</td>
+<td align="center" width="50%">
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20133935.png" alt="Game 2" width="100%" style="border-radius: 12px;"/>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20134001.png" alt="Game 3" width="100%" style="border-radius: 12px;"/>
+</td>
+<td align="center" width="50%">
+<img src="./frontend/src/assets/Screenshot%202026-02-26%20134027.png" alt="Game 4" width="100%" style="border-radius: 12px;"/>
+</td>
+</tr>
+</table>
 
-*Real-time multiplayer gaming experience*
+*Experience seamless real-time multiplayer gaming with your friends!*
 
 </div>
 
@@ -132,29 +149,25 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
 
-## <img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" width="30"> Games You Can Play
+## 🎮 Games You Can Play
 
 <div align="center">
 
 <table>
 <tr>
 <td align="center" width="25%">
-<img src="https://user-images.githubusercontent.com/74038190/212257465-7ce8d493-cac5-494e-982a-5a9deb852c4b.gif" width="50"><br/>
 <h3>⭕ Tic Tac Toe</h3>
 <p>The timeless classic! Take turns placing X's and O's. Get three in a row to win!</p>
 </td>
 <td align="center" width="25%">
-<img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="50"><br/>
 <h3>🐍 Snake & Ladders</h3>
 <p>Roll the dice, climb the ladders, and avoid the snakes! First to 100 wins!</p>
 </td>
 <td align="center" width="25%">
-<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="50"><br/>
 <h3>🔢 Sudoku Race</h3>
 <p>Race against your friend to complete the puzzle! Every cell counts!</p>
 </td>
 <td align="center" width="25%">
-<img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="50"><br/>
 <h3>🎯 Carrom</h3>
 <p>Flick the striker to pocket coins! A game of precision and strategy!</p>
 </td>
@@ -212,14 +225,14 @@ Your safety is our priority! KlatChat is protected by **Arcjet** security suite.
 
 | | Feature | Description |
 |:---:|:---|:---|
-| <img src="https://user-images.githubusercontent.com/74038190/212257465-7ce8d493-cac5-494e-982a-5a9deb852c4b.gif" width="20"> | **Instant Messaging** | Messages delivered in milliseconds via Socket.io |
-| <img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="20"> | **Online Status** | See who's online with real-time presence indicators |
-| <img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="20"> | **Image Sharing** | Share photos via Cloudinary integration |
-| <img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="20"> | **Multiplayer Games** | 4 games with real-time synchronization |
-| <img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" width="20"> | **Secure Auth** | JWT tokens stored in HTTP-only cookies |
-| <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="20"> | **Rate Protected** | Arcjet security against abuse |
-| <img src="https://user-images.githubusercontent.com/74038190/212257465-7ce8d493-cac5-494e-982a-5a9deb852c4b.gif" width="20"> | **Dark Theme** | Beautiful dark UI that's easy on the eyes |
-| <img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="20"> | **Responsive** | Works perfectly on all screen sizes |
+| 💬 | **Instant Messaging** | Messages delivered in milliseconds via Socket.io |
+| 🟢 | **Online Status** | See who's online with real-time presence indicators |
+| 🖼️ | **Image Sharing** | Share photos via Cloudinary integration |
+| 🎮 | **Multiplayer Games** | 4 games with real-time synchronization |
+| 🔐 | **Secure Auth** | JWT tokens stored in HTTP-only cookies |
+| 🛡️ | **Rate Protected** | Arcjet security against abuse |
+| 🌙 | **Dark Theme** | Beautiful dark UI that's easy on the eyes |
+| 📱 | **Responsive** | Works perfectly on all screen sizes |
 
 </div>
 
@@ -268,13 +281,13 @@ Your safety is our priority! KlatChat is protected by **Arcjet** security suite.
 
 <br/>
 
-<a href="https://linkedin.com/in/yourprofile">
+<a href="https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/tati-suman-yadav-938569351/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </a>
-<a href="https://github.com/yourusername">
+<a href="https://github.com/sumancoder-cloud">
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
 </a>
-<a href="mailto:your.email@example.com">
+<a href="mailto:suman.tati2005@gmail.com">
 <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
 </a>
 
