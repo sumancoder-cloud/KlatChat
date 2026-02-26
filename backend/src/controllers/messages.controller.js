@@ -1,6 +1,7 @@
 const Messages=require('../models/Messages.model')
 
 const User=require('../models/User.model')
+const cloudinary=require('../lib/cloudinary')
 
 const getAllContacts=async(req,res)=>{
     try{
@@ -59,9 +60,9 @@ const sendMessage=async(req,res)=>{
         const {text,image}=req.body
         const {id:receiverId}=req.params
 
-        senderId=req.user._id
+        const senderId = req.user._id
 
-        if(!text || !image){
+        if(!text && !image){
             return res.status(400).json({
                 message:"Text or Image field is required"
             })

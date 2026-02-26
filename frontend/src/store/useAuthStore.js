@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : "/";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:4000" : "/";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -35,7 +35,8 @@ export const useAuthStore = create((set, get) => ({
       toast.success("Account created successfully!");
       get().connectSocket();
     } catch (error) {
-      toast.error(error.response.data.message);
+      const msg = error?.response?.data?.message || error?.message || "Error creating account";
+      toast.error(msg);
     } finally {
       set({ isSigningUp: false });
     }
@@ -51,7 +52,8 @@ export const useAuthStore = create((set, get) => ({
 
       get().connectSocket();
     } catch (error) {
-      toast.error(error.response.data.message);
+      const msg = error?.response?.data?.message || error?.message || "Error logging in";
+      toast.error(msg);
     } finally {
       set({ isLoggingIn: false });
     }
@@ -64,7 +66,8 @@ export const useAuthStore = create((set, get) => ({
       toast.success("Logged out successfully");
       get().disconnectSocket();
     } catch (error) {
-      toast.error("Error logging out");
+      const msg = error?.response?.data?.message || error?.message || "Error logging out";
+      toast.error(msg);
       console.log("Logout error:", error);
     }
   },
@@ -76,7 +79,8 @@ export const useAuthStore = create((set, get) => ({
       toast.success("Profile updated successfully");
     } catch (error) {
       console.log("Error in update profile:", error);
-      toast.error(error.response.data.message);
+      const msg = error?.response?.data?.message || error?.message || "Error updating profile";
+      toast.error(msg);
     }
   },
 
@@ -86,11 +90,21 @@ export const useAuthStore = create((set, get) => ({
 
     const socket = io(BASE_URL, {
       withCredentials: true, // this ensures cookies are sent with the connection
+      transports: ["websocket"], // prefer websocket to avoid polling/network-change errors
     });
 
+    // allow explicit connect so client can control timing
     socket.connect();
 
     set({ socket });
+
+    socket.on("connect", () => {
+      console.log("Socket connected", socket.id);
+    });
+
+    socket.on("connect_error", (err) => {
+      console.log("Socket connect error:", err);
+    });
 
     // listen for online users event
     socket.on("getOnlineUsers", (userIds) => {
