@@ -6,9 +6,6 @@ const dotenv=require('dotenv');
 
 const cors=require('cors')
 
-const {Server}=require('socket.io')
-
-
 const{app,server}=require('./lib/socket.js')
 
 app.use(
