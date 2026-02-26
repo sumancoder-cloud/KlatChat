@@ -4,7 +4,16 @@ const express=require('express');
 
 const dotenv=require('dotenv');
 
+const cors=require('cors')
+
 const app=express();
+
+app.use(
+    cors({
+        origin:"http://localhost:5173",
+        credentials:true
+    })
+);
 
 app.use(express.json())
 
@@ -14,6 +23,8 @@ const path=require('path')
 const cookieParser=require('cookie-parser')
 
 app.use(cookieParser())
+
+
 
 //even we can useimport express from 'express'  but need to keep the type as module
 
