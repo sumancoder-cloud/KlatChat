@@ -86,7 +86,7 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 ### 💬 Real-Time Messaging
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20143943.png" alt="Chat Interface" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<img src="frontend/src/assets/Screenshot 2026-02-26 143943.png" alt="Chat Interface" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
 
 *Send messages, share images, and see online status in real-time*
 
@@ -281,13 +281,13 @@ Your safety is our priority! KlatChat is protected by **Arcjet** security suite.
 
 <br/>
 
-<a href="https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/tati-suman-yadav-938569351/">
+<a href="https://linkedin.com/in/yourprofile">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </a>
-<a href="https://github.com/sumancoder-cloud">
+<a href="https://github.com/yourusername">
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
 </a>
-<a href="mailto:suman.tati2005@gmail.com">
+<a href="mailto:your.email@example.com">
 <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
 </a>
 
