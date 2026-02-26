@@ -86,7 +86,7 @@ Imagine chatting with your friends and suddenly challenging them to a game of Ti
 
 ### 💬 Real-Time Messaging
 
-<img src="./frontend/src/assets/Screenshot%202026-02-26%20143943.png" alt="Chat Interface" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
+<img src="frontend/src/assets/Screenshot 2026-02-26 143943.png" alt="Chat Interface" width="85%" style="border-radius: 15px; margin: 15px 0;"/>
 
 *Send messages, share images, and see online status in real-time*
 
